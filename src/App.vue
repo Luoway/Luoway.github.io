@@ -18,6 +18,12 @@ export default {
     Footer
   },
   created(){
+    const key = 'cache404'
+    const cache404 = localStorage.getItem(key)
+    if(cache404){
+      localStorage.deleteItem(key)
+      this.$router.replace(cache404)
+    }
     window.Bus = new Vue()
     Bus.$on('relocateFooter', this.relocateFooter)
     window.onresize = ()=>{
