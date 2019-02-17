@@ -1,8 +1,10 @@
 const Owner = 'luoway'
 const Project = 'blog'
-const clientID = '505ebd28389660214b3f'
-const clientSecret = 'b8ed956f4d5c445bd48b8adfe7bdb388ea06def3'
-const GithubApi = `https://api.github.com/graphql?client_id=${clientID}&client_secret=${clientSecret}`
+const token = '5567ddbedd7bc827fc19a718f391853515edbdbb'
+    .split('')
+    .reverse()
+    .join('')
+const GithubApi = `https://api.github.com/graphql`
 const PageSize = 10
 const labelField = 'description' //or 'name'
 
@@ -15,6 +17,7 @@ const request = function(api, params) {
                 resolve(XHR.responseText)
             }
         }
+        XHR.setRequestHeader('Authorization', 'token ' + token)
         XHR.setRequestHeader(
             'Content-Type',
             'application/x-www-form-urlencoded; charset=UTF-8'
