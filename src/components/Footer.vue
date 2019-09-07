@@ -44,10 +44,10 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 0 20px;
     width: 100%;
     max-width: 1020px;
     color: #999;
+    box-sizing: border-box;
 }
 .right{
     color: #666;

@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div id="home">
         <Labels v-if="labels.length" class="labels" :list="labels" v-model="activeLabel" />
         <Issues class="issues" :list="issuesShown" />
     </div>
@@ -57,7 +57,7 @@ export default {
 }
 </script>
 <style lang="less">
-.home {
+#home {
     margin-top: 48px;
     display: flex;
 }

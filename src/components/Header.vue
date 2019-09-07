@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header id="header">
         <div class="ct">
             <router-link to="/" class="logo">fecat.win</router-link>
             <ul class="nav">
@@ -23,7 +23,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.header{
+#header{
     padding: 25px 0;
     background-color: #3c4146;
     border-bottom-color: #202326;
@@ -33,9 +33,9 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 0 20px;
     width: 100%;
     max-width: 1020px;
+    box-sizing: border-box;
 }
 .logo{
     font-size: 18px;
@@ -44,6 +44,7 @@ export default {
 .nav{
     display: flex;
     font-size: 16px;
+    list-style: none;
 
     .item{
         color: #fff;

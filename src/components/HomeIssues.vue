@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="wrapper">
         <ul v-if="list.length" class="list">
             <li class="item" v-for="item in list" :key="item.title">
                 <router-link :to="'/article/'+item.number" class="title">{{item.title}}</router-link>
                 <div class="info">
                     <div class="time">
-                        <Clock :time="item.createdTime" />
+                        <Clock class="clock" :time="item.createdTime" />
                         {{formatDate(item.createdTime)}}
                     </div>
                     <div class="labels">
@@ -45,6 +45,7 @@ export default {
     position: relative;
     padding-left: 32px;
     text-align: left;
+    list-style: none;
     border-left: @border;
 
     &::before,
@@ -108,5 +109,28 @@ export default {
 }
 .label {
     margin-right: 5px;
+}
+@media screen and (max-width: 640px) {
+    .wrapper{
+        padding-left: 10px;
+    }
+    .list{
+        padding-left: 12px;
+    }
+    .title{
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .info{
+        font-size: 14px;
+
+        &::after{
+            left: -12px;
+            width: 12px;
+        }
+    }
+    .clock{
+        display: none;
+    }
 }
 </style>

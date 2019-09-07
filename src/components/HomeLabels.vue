@@ -1,15 +1,13 @@
 <template>
-    <div>
-        <div class="ct">
-            <div class="title">标签</div>
-            <ul class="list">
-                <li class="item" 
-                    v-for="item in list" 
-                    :key="item" 
-                    :class="{active: item === value}" 
-                    @click="item !== value && $emit('input', item)">{{item}}</li>
-            </ul>
-        </div>
+    <div class="ct">
+        <div class="title">标签</div>
+        <ul class="list">
+            <li class="item" 
+                v-for="item in list" 
+                :key="item" 
+                :class="{active: item === value}" 
+                @click="item !== value && $emit('input', item)">{{item}}</li>
+        </ul>
     </div>
 </template>
 <script>
@@ -29,6 +27,8 @@ export default {
     text-align: left;
 }
 .list{
+    list-style: none;
+    padding: 0;
     margin-top: 12px;
     font-size: 15px;
     font-weight: 300;
@@ -47,6 +47,11 @@ export default {
         background-color: #def;
         color: #000;
         cursor: default;
+    }
+}
+@media screen and (max-width: 640px) {
+    .ct{
+        display: none;
     }
 }
 </style>

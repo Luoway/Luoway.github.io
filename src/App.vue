@@ -46,13 +46,11 @@ body {
     margin: 0;
     min-height: 100%;
 }
+li, p{
+    line-height: 150%;
+}
 a {
     text-decoration: none;
-}
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
 }
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -66,5 +64,16 @@ ul {
     margin: 0 auto;
     width: 100%;
     max-width: 1020px;
+}
+@media screen and (max-width: 640px) {
+    #app{
+        #header,
+        #footer{
+            padding: 10px;
+        }
+        #home{
+            margin-top: 24px;
+        }
+    }
 }
 </style>

@@ -130,4 +130,10 @@ h1{
         }
     }
 }
+
+@media screen and (max-width: 640px) {
+    .article{
+        padding: 10px;
+    }
+}
 </style>
