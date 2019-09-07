@@ -122,6 +122,7 @@ export default {
         line-height: 24px;
     }
     .info{
+        margin-top: 0;
         font-size: 14px;
 
         &::after{

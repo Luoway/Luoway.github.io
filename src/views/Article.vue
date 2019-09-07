@@ -135,5 +135,8 @@ h1{
     .article{
         padding: 10px;
     }
+    /deep/ pre{
+        font-size: 14px;
+    }
 }
 </style>

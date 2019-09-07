@@ -33,6 +33,8 @@ export default {
     font-size: 13px;
     line-height: 32px;
     border-top: 1px solid #e5e5e5;
+    box-sizing: border-box;
+
     &.fixed{
         position: fixed;
         bottom: 0;

@@ -52,6 +52,9 @@ li, p{
 a {
     text-decoration: none;
 }
+img{
+    max-width: 100%;
+}
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -74,6 +77,9 @@ a {
         #home{
             margin-top: 24px;
         }
+    }
+    ul, ol{
+        padding-left: 10px;
     }
 }
 </style>
