@@ -49,45 +49,45 @@ export function getIssues(label, last) {
         GithubApi,
         JSON.stringify({
             query: GithubApiFormat(`query {
-                repository(owner: "${Owner}", name: "${Project}") {
-                    issues(
-                        orderBy: {
-                            field: UPDATED_AT, 
-                            direction: DESC
-                        }, 
-                        labels: ${label ? [label] : null}, 
-                        first: ${PageSize},
-                        after: ${last ? `"${last.cursor}"` : null}
-                    ) {
-                        edges {
-                            cursor
-                            node {
-                                number
-                                title
-                                labels(first: 10) {
-                                    nodes {
-                                        name
-                                        color
-                                        description
-                                    }
-                                }
-                                createdAt
-                            }
+    repository(owner: "${Owner}", name: "${Project}") {
+        issues(
+            orderBy: {
+                field: CREATED_AT, 
+                direction: DESC
+            }, 
+            labels: ${label ? [label] : null}, 
+            first: ${PageSize},
+            after: ${last ? `"${last.cursor}"` : null}
+        ) {
+            edges {
+                cursor
+                node {
+                    number
+                    title
+                    labels(first: 10) {
+                        nodes {
+                            name
+                            color
+                            description
                         }
                     }
-                    ${
-                        last
-                            ? ''
-                            : ` labels(first: 100) {
-                                    nodes {
-                                        name
-                                        color
-                                        description
-                                    }
-                                }`
-                    }
+                    createdAt
                 }
-            }`)
+            }
+        }
+        ${
+            last
+                ? ''
+                : ` labels(first: 100) {
+                        nodes {
+                            name
+                            color
+                            description
+                        }
+                    }`
+        }
+    }
+}`)
         })
     ).then(res => {
         let issues = []
@@ -126,24 +126,22 @@ export function getIssue(number) {
     return request(
         GithubApi,
         JSON.stringify({
-            query: `
-                query {
-                    repository(owner: "luoway", name: "blog") {
-                        issue(number: ${number}) {
-                            title
-                            createdAt
-                            labels(first:10){
-                                nodes{
-                                    name
-                                    color
-                                    description
-                                }
-                            }
-                            body
-                        }
-                    }
-              }
-            `
+            query: `query {
+    repository(owner: "luoway", name: "blog") {
+        issue(number: ${number}) {
+            title
+            createdAt
+            labels(first:10){
+                nodes{
+                    name
+                    color
+                    description
+                }
+            }
+            body
+        }
+    }
+}`
         })
     ).then(res => {
         res = JSONParse(res)
