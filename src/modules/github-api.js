@@ -5,7 +5,7 @@ const token = '5567ddbedd7bc827fc19a718f391853515edbdbb'
     .reverse()
     .join('')
 const GithubApi = `https://api.github.com/graphql`
-const PageSize = 10
+const PageSize = 100
 const labelField = 'description' //or 'name'
 
 const request = function(api, params) {
@@ -35,7 +35,7 @@ const JSONParse = json => {
     try {
         rtn = JSON.parse(json)
     } catch (e) {
-        console.log('parse error')
+        return {}
     }
 
     return rtn
@@ -87,7 +87,7 @@ export function getIssues(label, last) {
                                 }`
                     }
                 }
-            }`),
+            }`)
         })
     ).then(res => {
         let issues = []
@@ -106,7 +106,7 @@ export function getIssues(label, last) {
                         number,
                         title,
                         labels: getLabels(labels),
-                        createdTime: new Date(createdAt),
+                        createdTime: new Date(createdAt)
                     }
                 })
             }
@@ -117,7 +117,7 @@ export function getIssues(label, last) {
 
         return {
             issues,
-            labels,
+            labels
         }
     })
 }
@@ -143,7 +143,7 @@ export function getIssue(number) {
                         }
                     }
               }
-            `,
+            `
         })
     ).then(res => {
         res = JSONParse(res)
@@ -155,7 +155,7 @@ export function getIssue(number) {
                 title,
                 time: new Date(createdAt),
                 labels: getLabels(labels),
-                content: body,
+                content: body
             }
         }
 

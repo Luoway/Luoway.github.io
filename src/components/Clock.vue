@@ -50,13 +50,14 @@ export default {
         left: 12px;
         bottom: 12px;
         width: 1px;
-        height: 8px;
+        height: 9px;
         background-color: #e5e5e5;;
     }
 }
 .hour{
     &::after{
         height: 6px;
+        width: 2px;
     }
 }
 </style>

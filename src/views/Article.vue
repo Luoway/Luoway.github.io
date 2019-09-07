@@ -21,7 +21,8 @@ const MD = new window.markdownit({
 }).use(Prism, {
     plugins: ['autolinker']
 }).use(Anchor,{ permalink: true, permalinkBefore: true, permalinkSymbol: '#' }).use(TOC,{
-    includeLevel: [2,3]
+    includeLevel: [2,3],
+    listType: 'ol'
 })
 
 export default {
@@ -37,7 +38,7 @@ export default {
         html(){
             window.Bus.$emit('relocateFooter')
             if(MD && this.content){
-                return MD.render('[[toc]]' + this.content)
+                return MD.render('[[toc]]\n' + this.content)
             }else{
                 return ''
             }
@@ -50,6 +51,12 @@ export default {
             that.time = time
             that.content = content
             labels.length && (that.labels = labels)
+        }).then(()=>{
+            that.$nextTick(()=>{
+                const tmp = decodeURIComponent(location.hash)
+                location.hash = ''
+                location.hash = tmp
+            })
         })
     },
     deactivated(){
@@ -74,7 +81,11 @@ export default {
     }
 }
 </script>
-
+<style>  
+hr{
+    color: #fafafa;
+}
+</style>
 <style lang="less" scoped>
 h1{
     text-align: center;
@@ -88,10 +99,29 @@ h1{
     top: 0;
     top: 100px;
     left: 50%;
-    margin-left: 310px;
+    margin-left: 320px;
     width: 200px;
+    color: #6a737d;
+    ol{
+        margin-left: 0;
+        padding-left: 0;
+    }
+    ol{
+        list-style: simp-chinese-informal;
+        margin-left: 10px;
+        ol{
+            list-style: decimal;
+            ol{
+                list-style: lower-roman;
+            }
+        }
+    }
+    a{
+        color: #6a737d;
+    }
 }
-/deep/ h2, /deep/ h3{
+/deep/ h2, 
+/deep/ h3{
     position: relative;
 
     /deep/ &:hover{

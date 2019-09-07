@@ -1,8 +1,8 @@
 <template>
     <footer id="footer" :class="{fixed: fixFooter}">
         <div class="ct">
-            <div class="bio">bio</div>
-            <div class="right">right</div>
+            <div class="bio">前端猫的领土</div>
+            <div class="right">© luoway</div>
         </div>
     </footer>
 </template>
@@ -19,7 +19,6 @@ export default {
                 const pageHeight = document.querySelector('#app').offsetHeight
                 const clientHeight = window.innerHeight
                 const footerHeight = document.querySelector('#footer').offsetHeight
-                
                 this.fixFooter = clientHeight - pageHeight > footerHeight
             })
         }
@@ -48,5 +47,9 @@ export default {
     padding: 0 20px;
     width: 100%;
     max-width: 1020px;
+    color: #999;
+}
+.right{
+    color: #666;
 }
 </style>

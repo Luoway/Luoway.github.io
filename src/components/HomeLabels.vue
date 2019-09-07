@@ -3,18 +3,18 @@
         <div class="ct">
             <div class="title">标签</div>
             <ul class="list">
-                <li class="item" v-for="item in list" :key="item">{{item}}</li>
+                <li class="item" 
+                    v-for="item in list" 
+                    :key="item" 
+                    :class="{active: item === value}" 
+                    @click="item !== value && $emit('input', item)">{{item}}</li>
             </ul>
         </div>
     </div>
 </template>
 <script>
-import Label from './Label.vue'
 export default {
-    props: ['list'],
-    components: {
-        Label
-    }
+    props: ['list', 'value']
 }
 </script>
 <style lang="less" scoped>
@@ -39,8 +39,14 @@ export default {
 .item{
     padding: 10px;
     border-bottom: @border;
+    cursor: pointer;
     &:last-of-type{
         border-bottom: none;
+    }
+    &.active{
+        background-color: #def;
+        color: #000;
+        cursor: default;
     }
 }
 </style>
